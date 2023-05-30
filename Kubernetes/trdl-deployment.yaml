@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trdl-deployment
+  labels:
+    app: trdl
+spec:
+  replicas: 3  # Number of desired replicas for high availability
+  selector:
+    matchLabels:
+      app: trdl
+  template:
+    metadata:
+      labels:
+        app: trdl
+    spec:
+      containers:
+      - name: trdl
+        image: spgreddy/trdl:latest  # Replace with the actual container image location
+        ports:
+        - containerPort: 80
